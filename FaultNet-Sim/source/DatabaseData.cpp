@@ -43,7 +43,7 @@ namespace FaultNet_Sim
 		simulatorData.TotalSimulationTime = sp.TotalSimulationTime;
 		simulatorData.TransferTime = sp.TransferTime;
 		simulatorData.RecoveryTime = sp.RecoveryTime;
-		simulatorData.EnergyRateWorking = sp.EnergyRateWorking;
+		simulatorData.EnergyRateSensing = sp.EnergyRateSensing;
 		simulatorData.EnergyRateTransfer = sp.EnergyRateTransfer;
 		simulatorData.TransmissionRange = sp.TransmissionRange;
 		simulatorData.InterferenceRange = sp.InterferenceRange;

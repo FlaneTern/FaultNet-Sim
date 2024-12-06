@@ -338,12 +338,12 @@ namespace FaultNet_Sim
 				{
 					m_SensorNodes[currentSN].m_CollectionTime += currentTime - previousEvents[currentSN].Timestamp;
 					m_SensorNodes[currentSN].m_CurrentData += currentTime - previousEvents[currentSN].Timestamp;
-					m_SensorNodes[currentSN].m_EnergyConsumed += (currentTime - previousEvents[currentSN].Timestamp) * m_SimulatorParameters.EnergyRateWorking + s_EnergyTransitionWorkingToTransfer;
+					m_SensorNodes[currentSN].m_EnergyConsumed += (currentTime - previousEvents[currentSN].Timestamp) * m_SimulatorParameters.EnergyRateSensing + s_EnergyTransitionWorkingToTransfer;
 					m_SensorNodes[currentSN].m_Packets[m_SensorNodes[currentSN].m_CurrentPacketIterator].Size += currentTime - m_SensorNodes[currentSN].m_Packets[m_SensorNodes[currentSN].m_CurrentPacketIterator].InitialTimestamp;
 				}
 				else if (currentState == WorkingState::Recovery)
 				{
-					m_SensorNodes[currentSN].m_EnergyWasted += (currentTime - previousEvents[currentSN].Timestamp) * m_SimulatorParameters.EnergyRateWorking;
+					m_SensorNodes[currentSN].m_EnergyWasted += (currentTime - previousEvents[currentSN].Timestamp) * m_SimulatorParameters.EnergyRateSensing;
 					{
 						for (int i = 0; i < m_SensorNodes[currentSN].m_Packets.size(); i++)
 						{
@@ -351,7 +351,7 @@ namespace FaultNet_Sim
 							while (energyCurrentSN != currentSN)
 							{
 								double distance = SensorNode::Distance(m_SensorNodes[energyCurrentSN], m_SensorNodes[m_SensorNodes[energyCurrentSN].m_CurrentParent]);
-								m_SensorNodes[energyCurrentSN].m_EnergyWasted += m_SensorNodes[currentSN].m_Packets[i].Size * m_SimulatorParameters.EnergyRateWorking + s_EnergyTransitionWorkingToTransfer;
+								m_SensorNodes[energyCurrentSN].m_EnergyWasted += m_SensorNodes[currentSN].m_Packets[i].Size * m_SimulatorParameters.EnergyRateSensing + s_EnergyTransitionWorkingToTransfer;
 								m_SensorNodes[energyCurrentSN].m_EnergyWasted += distance * distance * m_SimulatorParameters.TransferTime * m_SimulatorParameters.EnergyRateTransfer + s_EnergyTransitionTransferToWorking;
 
 								energyCurrentSN = m_SensorNodes[energyCurrentSN].m_CurrentParent;
@@ -361,7 +361,7 @@ namespace FaultNet_Sim
 
 					m_SensorNodes[currentSN].m_WastedTime += currentTime - previousEvents[currentSN].Timestamp;
 					failureCount++;
-					m_SensorNodes[currentSN].m_EnergyConsumed += (currentTime - previousEvents[currentSN].Timestamp) * m_SimulatorParameters.EnergyRateWorking;
+					m_SensorNodes[currentSN].m_EnergyConsumed += (currentTime - previousEvents[currentSN].Timestamp) * m_SimulatorParameters.EnergyRateSensing;
 					m_SensorNodes[currentSN].m_Packets.clear();
 					m_SensorNodes[currentSN].m_CurrentPacketIterator = -1;
 					m_SensorNodes[currentSN].m_CurrentData = 0;
@@ -431,7 +431,7 @@ namespace FaultNet_Sim
 							while (energyCurrentSN != currentSN)
 							{
 								double distance = SensorNode::Distance(m_SensorNodes[energyCurrentSN], m_SensorNodes[m_SensorNodes[energyCurrentSN].m_CurrentParent]);
-								m_SensorNodes[energyCurrentSN].m_EnergyWasted += m_SensorNodes[currentSN].m_Packets[i].Size * m_SimulatorParameters.EnergyRateWorking + s_EnergyTransitionWorkingToTransfer;
+								m_SensorNodes[energyCurrentSN].m_EnergyWasted += m_SensorNodes[currentSN].m_Packets[i].Size * m_SimulatorParameters.EnergyRateSensing + s_EnergyTransitionWorkingToTransfer;
 								m_SensorNodes[energyCurrentSN].m_EnergyWasted += distance * distance * m_SimulatorParameters.TransferTime * m_SimulatorParameters.EnergyRateTransfer + s_EnergyTransitionTransferToWorking;
 
 								energyCurrentSN = m_SensorNodes[energyCurrentSN].m_CurrentParent;

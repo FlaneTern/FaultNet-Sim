@@ -39,7 +39,7 @@ namespace FaultNet_Sim
                     TotalSimulationTime real,
                     TransferTime real,
                     RecoveryTime real,
-                    EnergyRateWorking real,
+                    EnergyRateSensing real,
                     EnergyRateTransfer real,
                     TransmissionRange real,
                     InterferenceRange real,
@@ -138,7 +138,7 @@ namespace FaultNet_Sim
         sqlite3_bind_double(statement, 5, sData->TotalSimulationTime);
         sqlite3_bind_double(statement, 6, sData->TransferTime);
         sqlite3_bind_double(statement, 7, sData->RecoveryTime);
-        sqlite3_bind_double(statement, 8, sData->EnergyRateWorking);
+        sqlite3_bind_double(statement, 8, sData->EnergyRateSensing);
         sqlite3_bind_double(statement, 9, sData->EnergyRateTransfer);
         sqlite3_bind_double(statement, 10, sData->TransmissionRange);
         sqlite3_bind_double(statement, 11, sData->InterferenceRange);

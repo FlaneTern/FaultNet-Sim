@@ -30,7 +30,7 @@ namespace FaultNet_Sim
         double TotalSimulationTime;
         double TransferTime;
         double RecoveryTime;
-        double EnergyRateWorking;
+        double EnergyRateSensing;
         double EnergyRateTransfer;
         double TransmissionRange;
         double InterferenceRange;

@@ -32,7 +32,7 @@ namespace FaultNet_Sim
 		double TransferTime = -1;
 		double RecoveryTime = -1;
 
-		double EnergyRateWorking;
+		double EnergyRateSensing;
 		double EnergyRateTransfer;
 
 		double TransmissionRange;
@@ -45,7 +45,7 @@ namespace FaultNet_Sim
 		std::vector<double> TransferTime;
 		std::vector<double> RecoveryTime;
 
-		std::vector<double> EnergyRateWorking;
+		std::vector<double> EnergyRateSensing;
 		std::vector<double> EnergyRateTransfer;
 
 		std::vector<double> TransmissionRange;
@@ -88,7 +88,7 @@ namespace FaultNet_Sim
 				{
 					for (auto& TotalSimulationTime : spg.TotalSimulationTime)
 					{
-						for (auto& energyRateWorking : spg.EnergyRateWorking)
+						for (auto& EnergyRateSensing : spg.EnergyRateSensing)
 						{
 							for (int energyRateTransfer : spg.EnergyRateTransfer)
 							{
@@ -101,7 +101,7 @@ namespace FaultNet_Sim
 											TotalSimulationTime,
 											transferTime,
 											recoveryTime,
-											energyRateWorking,
+											EnergyRateSensing,
 											energyRateTransfer,
 											transmissionRange,
 											interferenceRange

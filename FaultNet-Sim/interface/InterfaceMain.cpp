@@ -57,7 +57,7 @@ void interfaceMain()
 		8.0,
 	};
 
-	std::vector<double> energyRateWorkings =
+	std::vector<double> EnergyRateSensings =
 	{
 		1.0,
 	};
@@ -67,7 +67,7 @@ void interfaceMain()
 		TotalSimulationTimes,
 		transferTimes,
 		recoveryTimes,
-		energyRateWorkings,
+		EnergyRateSensings,
 		energyRateTransfers,
 		transmissionRanges,
 		interferenceRanges
