@@ -414,3 +414,5 @@ Results/*
 !Results/Visualization-2.ipynb
 !Results/.gitattributes
 .vscode/
+
+venv/

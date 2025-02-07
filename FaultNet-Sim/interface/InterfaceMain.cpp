@@ -9,13 +9,13 @@ void interfaceMain()
 
 	I_ProblemData i_ProblemData =
 	{
-		0.1,
+		2,
 		2.3
 	};
 
 	I_SimulatorData i_SimulatorData =
 	{
-		3.1,
+		3,
 		2.1
 	};
 		
@@ -29,7 +29,7 @@ void interfaceMain()
 
 	std::vector<double> TotalSimulationTimes =
 	{
-		3600 * 24,
+		3600 * 24 * 90,
 	};
 
 	std::vector<double> transmissionRanges =
@@ -39,7 +39,7 @@ void interfaceMain()
 
 	std::vector<double> interferenceRanges =
 	{
-		100, 150, 200, 250, 300
+		150, 225, 300, 375, 450
 	};
 
 	std::vector<double> transferTimes =
@@ -54,12 +54,12 @@ void interfaceMain()
 
 	std::vector<double> energyRateTransfers =
 	{
-		8.0,
+		17.4 * 2.0 * 0.001 * 0.0, 
 	};
 
-	std::vector<double> EnergyRateSensings =
+	std::vector<double> energyRateSensings =
 	{
-		1.0,
+		17.4 * 2.0 * 0.001 * 0.125, 
 	};
 
 	FaultNet_Sim::SimulatorParameterGrid spg =
@@ -67,7 +67,7 @@ void interfaceMain()
 		TotalSimulationTimes,
 		transferTimes,
 		recoveryTimes,
-		EnergyRateSensings,
+		energyRateSensings,
 		energyRateTransfers,
 		transmissionRanges,
 		interferenceRanges

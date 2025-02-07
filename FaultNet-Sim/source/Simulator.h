@@ -88,9 +88,9 @@ namespace FaultNet_Sim
 				{
 					for (auto& TotalSimulationTime : spg.TotalSimulationTime)
 					{
-						for (auto& EnergyRateSensing : spg.EnergyRateSensing)
+						for (auto& energyRateSensing : spg.EnergyRateSensing)
 						{
-							for (int energyRateTransfer : spg.EnergyRateTransfer)
+							for (auto& energyRateTransfer : spg.EnergyRateTransfer)
 							{
 								for (auto& transmissionRange : spg.TransmissionRange)
 								{
@@ -101,7 +101,7 @@ namespace FaultNet_Sim
 											TotalSimulationTime,
 											transferTime,
 											recoveryTime,
-											EnergyRateSensing,
+											energyRateSensing,
 											energyRateTransfer,
 											transmissionRange,
 											interferenceRange

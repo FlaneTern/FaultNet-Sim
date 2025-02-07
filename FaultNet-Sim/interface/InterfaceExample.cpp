@@ -7,6 +7,7 @@ namespace FaultNet_Sim
 
 	static constexpr double s_EnergyTransitionWorkingToTransfer = 0.0;
 	static constexpr double s_EnergyTransitionTransferToWorking = 0.0;
+	static constexpr double s_BitRate = 21.28;
 
 
 	void ExampleProblem::GenerateSNs()
@@ -337,9 +338,9 @@ namespace FaultNet_Sim
 				else if (currentState == WorkingState::Transfer)
 				{
 					m_SensorNodes[currentSN].m_CollectionTime += currentTime - previousEvents[currentSN].Timestamp;
-					m_SensorNodes[currentSN].m_CurrentData += currentTime - previousEvents[currentSN].Timestamp;
+					m_SensorNodes[currentSN].m_CurrentData += (currentTime - previousEvents[currentSN].Timestamp) * s_BitRate;
 					m_SensorNodes[currentSN].m_EnergyConsumed += (currentTime - previousEvents[currentSN].Timestamp) * m_SimulatorParameters.EnergyRateSensing + s_EnergyTransitionWorkingToTransfer;
-					m_SensorNodes[currentSN].m_Packets[m_SensorNodes[currentSN].m_CurrentPacketIterator].Size += currentTime - m_SensorNodes[currentSN].m_Packets[m_SensorNodes[currentSN].m_CurrentPacketIterator].InitialTimestamp;
+					m_SensorNodes[currentSN].m_Packets[m_SensorNodes[currentSN].m_CurrentPacketIterator].Size = (currentTime - m_SensorNodes[currentSN].m_Packets[m_SensorNodes[currentSN].m_CurrentPacketIterator].InitialTimestamp) * s_BitRate;
 				}
 				else if (currentState == WorkingState::Recovery)
 				{
@@ -415,6 +416,11 @@ namespace FaultNet_Sim
 						m_SensorNodes[currentSN].m_WastedTime += m_SimulatorParameters.TransferTime;
 						m_SensorNodes[currentSN].m_Packets.push_back({ currentSN, currentTime });
 						m_SensorNodes[currentSN].m_CurrentPacketIterator = m_SensorNodes[currentSN].m_Packets.size() - 1;
+					}
+					else
+					{
+						m_SensorNodes[currentSN].m_Packets.clear();
+						m_SensorNodes[currentSN].m_CurrentData = 0;
 					}
 				}
 				else if (currentState == WorkingState::Transfer) {}
