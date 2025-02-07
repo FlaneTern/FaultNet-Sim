@@ -54,7 +54,7 @@ void interfaceMain()
 
 	std::vector<double> energyRateTransfers =
 	{
-		17.4 * 2.0 * 0.001 * 0.0, 
+		17.4 * 2.0 * 0.001, 
 	};
 
 	std::vector<double> energyRateSensings =
